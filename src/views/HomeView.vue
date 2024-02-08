@@ -1,13 +1,14 @@
 <template>
+  <NavigationHeader/>
   <h1> Hola Mundo</h1>
 </template>
 
-<script lang="ts" >
+<script lang="ts">
 import { defineComponent } from 'vue';
-// import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import NavigationHeader from '@/components/NavigationHeader.vue'; // @ is an alias to /src
 
 export default defineComponent({
   name: 'HomeView',
-  components: { },
+  components: { NavigationHeader }, // Aquí declaras el componente Navbar
 });
 </script>
