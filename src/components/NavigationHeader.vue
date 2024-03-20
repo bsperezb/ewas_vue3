@@ -3,7 +3,7 @@
     <div class="nav-container">
       <a href="https://flowbite.com/" class=" nav-logo-container">
         <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo">
-        <span class="nav-logo-text">Ewas</span>
+        <span class="nav-logo-text">Ewas2</span>
       </a>
       <div class="nav-button-container">
         <button type="button"
