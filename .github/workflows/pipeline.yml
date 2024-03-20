@@ -16,7 +16,8 @@ jobs:
         with: 
           node-version: '20'
       - name: Install dependencies 
-        run: npm install --no-audit --no-fund --no-optional
+        run: npm ci
+        # run: npm install --no-audit --no-fund --no-optional
       - name: Linter 
         run: npm run lint
       - name: Build
