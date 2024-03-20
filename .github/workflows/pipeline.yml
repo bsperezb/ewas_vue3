@@ -10,13 +10,18 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  deploy:
+
+  avoid_redundancy:
     runs-on: ubuntu-latest
     steps:
       - name: cancel Previous Redundants Build
         uses: styfle/cancel-workflow-action@0.9.1
         with:
           access_token: ${{ github.token }}
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0 
@@ -24,10 +29,23 @@ jobs:
         with: 
           node-version: '20'
       - name: Install dependencies 
-        # run: npm install --no-audit --no-fund --no-optional
-        # npm ci mejora la instalacion par ci
         run: npm ci
       - name: Linter 
         run: npm run lint
+      - name: Build
+        run: npm run build
+
+  build:
+    needs: [lint]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 
+      - uses: actions/setup-node@v4
+        with: 
+          node-version: '20'
+      - name: Install dependencies 
+        run: npm ci
       - name: Build
         run: npm run build
